@@ -8,7 +8,7 @@ analyser.maxDecibels = MAX_DB;
 analyser.smoothingTimeConstant = 0.5;
 var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 var barArray = [];
-var UNIT_HEIGHT = 255/100;
+var UNIT_HEIGHT = 100/255;
 
 
 function createBars(barNumber){
@@ -16,6 +16,7 @@ function createBars(barNumber){
 	for(var indexBar = 0; indexBar < barNumber; indexBar++){
 		var barElement = document.createElement("div");
 		barElement.className = "bar";
+		barElement.style.left = (indexBar * barWidth) + "%";
 		barElement.style.width = barWidth + "%";
 		document.body.appendChild(barElement);
 		barArray.push(barElement);
@@ -25,7 +26,7 @@ function createBars(barNumber){
 function render(){
 	analyser.getByteFrequencyData(frequencyData);
 	for(var indexFft = 0; indexFft < analyser.frequencyBinCount; indexFft++){
-		barArray[indexFft].style.height = UNIT_HEIGHT * frequencyData[indexFft] + "%";
+		barArray[indexFft].style.height = (UNIT_HEIGHT * frequencyData[indexFft]) + "%";
 	}
 	window.requestAnimationFrame(render);
 }
@@ -43,7 +44,13 @@ function start(){
 		audioSource.connect(analyser);
 		analyser.connect(audioCtx.destination);
 		analyser.getByteFrequencyData(frequencyData);
-		this.play();
+
+		var playButton = document.getElementById("play-button");
+		playButton.style.visibility = "visible";
+		playButton.addEventListener("click", function(){
+			playButton.style.visibility = "hidden";
+			audio.play();
+		})
 	})
 
 	window.requestAnimationFrame(render);

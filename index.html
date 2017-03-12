@@ -10,14 +10,26 @@
 		}
 
 		.bar{
-			display: inline-block;
+			position: absolute;
+			bottom: 0;
+			display: block;
 			background-color: red;
 			height: 100%;
+		}
+
+		.play-button{
+			position: absolute;
+			width: 20%;
+			height: auto;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			visibility: "hidden";
 		}
 	</style>
 </head>
 <script src="fft.js"></script>
 <body>
-
+	<img id="play-button" class="play-button" src="play.png"/>
 </body>
 </html>
