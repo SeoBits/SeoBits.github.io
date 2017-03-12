@@ -1,11 +1,14 @@
-var FFT_SIZE = 128
+var FFT_SIZE = 128;
+var MAX_DB = 30;
 
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 var analyser = audioCtx.createAnalyser();
-analyser.fftSize = FFT_SIZE
+analyser.fftSize = FFT_SIZE;
+analyser.maxDecibels = MAX_DB;
+analyser.smoothingTimeConstant = 0.5;
 var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 var barArray = [];
-var UNIT_HEIGHT = 255/100
+var UNIT_HEIGHT = 255/100;
 
 
 function createBars(barNumber){
