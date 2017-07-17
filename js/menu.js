@@ -16,7 +16,7 @@
 				var globalLeft = parentMenu.getBoundingClientRect().left;
 
 				menuselector.style.opacity = 0.3;
-				menuselector.style.transform = "scale(1, 1.2)";
+				menuselector.style.transform = "scale(1, 1)";
 				menuselector.style.left = (globalLeft + localLeft - 10) + "px";
 				menuselector.style.width = (targetBoundingBox.width + 20)+ "px";
 			}
