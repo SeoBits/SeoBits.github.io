@@ -1,0 +1,59 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Appboy Plugin for Corona SDK\n\n\nAppboy\n is an analytics system for iOS and Android.\n\n\nThis plugin allows the usage of some of the core functionality with Corona SDK, deeper functionality might be added in the future.\n\n\nGetting Started\n\n\n1.Activate the appboy plugin from \nCorona Marketplace\n.\n\n\n2.Add the plugin to your buid.settings inside your Corona Project.\n\n\nsettings = {\n    plugins = {\n        [\"plugin.appboy\"] = {\n            publisherId = \"com.coronalabs\"\n        },\n    },\n}\n\n\n\n\n3.For android is important to add the following permissions and properties\n\n\nsettings = {\n    android = {\n        applicationChildElements = {\n            [[\n                <service android:name=\"com.appboy.services.AppboyDataSyncService\"/>\n            ]],\n        },\n        usesPermissions =\n        {\n            \"android.permission.INTERNET\",\n            \"android.permission.ACCESS_NETWORK_STATE\",\n            \"com.google.android.c2dm.permission.RECEIVE\",\n            \"android.permission.WAKE_LOCK\"\n        },\n    },\n}\n\n\n\n\nPlugin Usage\n\n\nTo use the plugin you need to require it at the start of your code:\n\n\nlocal appboyPlugin = require(\"plugin.appboy\");\n\n\n\n\nPlugin Functions\n\n\ninit\n\n\nInitialize Appboy with the provided API KEY(Found in the Appboy's developer console).\n\n\nNote:\n Any call done to Appboy before initializing will be ignored.\n\n\nappboyPlugin.init(\"YOUR_API_KEY\");\n\n\n\n\ngetDeviceId\n\n\nGets a unique device identifier, this might change if the app is uninstalled.\n\n\nlocal deviceId = appboyPlugin.getDeviceId();\n\n\n\n\nchangeUser\n\n\nWhen you first start using Appboy on a device, the user is considered \"anonymous\". You can use this method to optionally identify a user with a unique ID.\n\nNote:\n Once you identify a user, you cannot go back to the \"anonymous\" profile. \n\n\nappboyPlugin.changeUser(\"SOME_USER_NAME\");\n\n\n\n\nflushDataAndProcessRequestQueue\n\n\nEnqueues a data flush request for the current user and immediately starts processing the network queue. Note that if the queue already contains another request for the current user, that the new data flush request will be merged into the already existing request and only one will execute for that user.\n\n\nappboyPlugin.flushDataAndProcessRequestQueue();\n\n\n\n\nlogCustomEvent\n\n\nAdds an app specific event to event tracking log that's lazily pushed up to the server. \n\n\nThis method allows for sending custom event with properties attached, simply add a table with the desired properties as a second parameter.\n\n\nappboyPlugin.logCustomEvent(\"SOME_CUSTOM_EVENT\"); --Custom Event\nappboyPlugin.logCustomEvent(\"SOME_CUSTOM_EVENT\", {customPropertyFoo = \"foo\", customPropertyBar = \"bar\"}); --Custom event with properties\n\n\n\n\nlogPurchase\n\n\nLogs a purchase made in the application, this method receives a table with the folowing mandatory properties:\n\n\nname\n - String to identify the purchase.\n\n\ncurrency\n - Currency of the purchase.\n\n\nprice\n - Price of the purchase.\n\n\nThe following are optional properties you can add to the table depending on the product you want to log\n\n\nquantity\n - Number of products purchased.\n\n\nproperties\n - Extra properties\n\n\nNote:\n Appboy supports purchases in multiple currencies. Purchases that you report in a currency other than USD will be shown in the dashboard in USD based on the exchange rate at the date they were reported.\n\n\nBasic purchase logging\n\n\nlocal purchaseProperties = {\n    name = \"SOME_PURCHASE\",\n    currency = \"USD\",\n    price = 9.99,\n}\nappboyPlugin.logPurchase(purchaseProperties);\n\n\n\n\nExtended purchase logging\n\n\nlocal purchaseProperties = {\n    name = \"SOME_PURCHASE\",\n    currency = \"USD\",\n    price = 0.99,\n    quantity = 10,\n    properties = {\n        customPropertyFoo = \"foo\",\n        customPropertyBar = \"foo\",\n    }\n}\nappboyPlugin.logPurchase(purchaseProperties);",
+            "title": "Home"
+        },
+        {
+            "location": "/#appboy-plugin-for-corona-sdk",
+            "text": "Appboy  is an analytics system for iOS and Android.  This plugin allows the usage of some of the core functionality with Corona SDK, deeper functionality might be added in the future.",
+            "title": "Appboy Plugin for Corona SDK"
+        },
+        {
+            "location": "/#getting-started",
+            "text": "1.Activate the appboy plugin from  Corona Marketplace .  2.Add the plugin to your buid.settings inside your Corona Project.  settings = {\n    plugins = {\n        [\"plugin.appboy\"] = {\n            publisherId = \"com.coronalabs\"\n        },\n    },\n}  3.For android is important to add the following permissions and properties  settings = {\n    android = {\n        applicationChildElements = {\n            [[\n                <service android:name=\"com.appboy.services.AppboyDataSyncService\"/>\n            ]],\n        },\n        usesPermissions =\n        {\n            \"android.permission.INTERNET\",\n            \"android.permission.ACCESS_NETWORK_STATE\",\n            \"com.google.android.c2dm.permission.RECEIVE\",\n            \"android.permission.WAKE_LOCK\"\n        },\n    },\n}",
+            "title": "Getting Started"
+        },
+        {
+            "location": "/#plugin-usage",
+            "text": "To use the plugin you need to require it at the start of your code:  local appboyPlugin = require(\"plugin.appboy\");",
+            "title": "Plugin Usage"
+        },
+        {
+            "location": "/#plugin-functions",
+            "text": "",
+            "title": "Plugin Functions"
+        },
+        {
+            "location": "/#init",
+            "text": "Initialize Appboy with the provided API KEY(Found in the Appboy's developer console).  Note:  Any call done to Appboy before initializing will be ignored.  appboyPlugin.init(\"YOUR_API_KEY\");",
+            "title": "init"
+        },
+        {
+            "location": "/#getdeviceid",
+            "text": "Gets a unique device identifier, this might change if the app is uninstalled.  local deviceId = appboyPlugin.getDeviceId();",
+            "title": "getDeviceId"
+        },
+        {
+            "location": "/#changeuser",
+            "text": "When you first start using Appboy on a device, the user is considered \"anonymous\". You can use this method to optionally identify a user with a unique ID. Note:  Once you identify a user, you cannot go back to the \"anonymous\" profile.   appboyPlugin.changeUser(\"SOME_USER_NAME\");",
+            "title": "changeUser"
+        },
+        {
+            "location": "/#flushdataandprocessrequestqueue",
+            "text": "Enqueues a data flush request for the current user and immediately starts processing the network queue. Note that if the queue already contains another request for the current user, that the new data flush request will be merged into the already existing request and only one will execute for that user.  appboyPlugin.flushDataAndProcessRequestQueue();",
+            "title": "flushDataAndProcessRequestQueue"
+        },
+        {
+            "location": "/#logcustomevent",
+            "text": "Adds an app specific event to event tracking log that's lazily pushed up to the server.   This method allows for sending custom event with properties attached, simply add a table with the desired properties as a second parameter.  appboyPlugin.logCustomEvent(\"SOME_CUSTOM_EVENT\"); --Custom Event\nappboyPlugin.logCustomEvent(\"SOME_CUSTOM_EVENT\", {customPropertyFoo = \"foo\", customPropertyBar = \"bar\"}); --Custom event with properties",
+            "title": "logCustomEvent"
+        },
+        {
+            "location": "/#logpurchase",
+            "text": "Logs a purchase made in the application, this method receives a table with the folowing mandatory properties:  name  - String to identify the purchase.  currency  - Currency of the purchase.  price  - Price of the purchase.  The following are optional properties you can add to the table depending on the product you want to log  quantity  - Number of products purchased.  properties  - Extra properties  Note:  Appboy supports purchases in multiple currencies. Purchases that you report in a currency other than USD will be shown in the dashboard in USD based on the exchange rate at the date they were reported.  Basic purchase logging  local purchaseProperties = {\n    name = \"SOME_PURCHASE\",\n    currency = \"USD\",\n    price = 9.99,\n}\nappboyPlugin.logPurchase(purchaseProperties);  Extended purchase logging  local purchaseProperties = {\n    name = \"SOME_PURCHASE\",\n    currency = \"USD\",\n    price = 0.99,\n    quantity = 10,\n    properties = {\n        customPropertyFoo = \"foo\",\n        customPropertyBar = \"foo\",\n    }\n}\nappboyPlugin.logPurchase(purchaseProperties);",
+            "title": "logPurchase"
+        }
+    ]
+}
