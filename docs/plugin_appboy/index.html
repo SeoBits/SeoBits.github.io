@@ -58,6 +58,7 @@
             <li><a href="#init">init</a></li>
             <li><a href="#getdeviceid">getDeviceId</a></li>
             <li><a href="#changeuser">changeUser</a></li>
+            <li><a href="#setuserinfo">setUserInfo</a></li>
             <li><a href="#flushdataandprocessrequestqueue">flushDataAndProcessRequestQueue</a></li>
             <li><a href="#logcustomevent">logCustomEvent</a></li>
             <li><a href="#logpurchase">logPurchase</a></li>
@@ -120,6 +121,34 @@
 <p>When you first start using Appboy on a device, the user is considered "anonymous". You can use this method to optionally identify a user with a unique ID.
 <strong>Note:</strong> Once you identify a user, you cannot go back to the "anonymous" profile. </p>
 <pre><code>appboyPlugin.changeUser(&quot;SOME_USER_NAME&quot;);
+</code></pre>
+
+<h2 id="setuserinfo"><strong>setUserInfo</strong></h2>
+<p>This function allows to set the properties to help identify a user with the id given on the changeUser() method.
+The available properties to change are:</p>
+<p><strong>firstName</strong> - First name of the user.</p>
+<p><strong>lastName</strong> - Last name of the user.</p>
+<p><strong>gender</strong> - Gender this can be either "male" or "female".</p>
+<p><strong>email</strong> - E-mail address for the user.</p>
+<p><strong>dateOfBirth</strong> - Birthday date.</p>
+<p><strong>country</strong> - Country.</p>
+<p><strong>homeCity</strong> - Home City of the user.</p>
+<p><strong>language</strong> - Language as 2 Character abreviation string eg. "EN", "ES", "PT".</p>
+<p><strong>phone</strong> - Phone number for the user.</p>
+<p><strong>avatarImageURL</strong> - An URL containing an image for the user to be displayed in their dashboard profile.</p>
+<pre><code>local info = {
+    firstName = &quot;NAME&quot;,
+    lastName = &quot;LNAME&quot;,
+    gender = &quot;male&quot;,
+    email = &quot;example@somedomain.com&quot;,
+    dateOfBirth = &quot;04-20-1988&quot;,
+    country = &quot;Sweeden&quot;,
+    homeCity = &quot;Stockholm&quot;,
+    language = &quot;EN&quot;,
+    phone = &quot;5555555555&quot;,
+    avatarImageURL = &quot;https://seobits.github.io/img/logobase.png&quot;,
+}
+appboyPlugin.setUserInfo(info);
 </code></pre>
 
 <h2 id="flushdataandprocessrequestqueue"><strong>flushDataAndProcessRequestQueue</strong></h2>
@@ -203,5 +232,5 @@ appboyPlugin.logPurchase(purchaseProperties);
 
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2017-10-13 19:21:32
+Build Date UTC : 2017-11-07 22:48:46
 -->
