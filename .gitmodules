@@ -1,0 +1,3 @@
+[submodule "projects/Grid-Level-Editor"]
+	path = projects/Grid-Level-Editor
+	url = https://github.com/SeoBits/Grid-Level-Editor
