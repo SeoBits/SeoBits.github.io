@@ -59,6 +59,7 @@
             <li><a href="#getdeviceid">getDeviceId</a></li>
             <li><a href="#changeuser">changeUser</a></li>
             <li><a href="#setuserinfo">setUserInfo</a></li>
+            <li><a href="#setcustomattribute">setCustomAttribute</a></li>
             <li><a href="#flushdataandprocessrequestqueue">flushDataAndProcessRequestQueue</a></li>
             <li><a href="#logcustomevent">logCustomEvent</a></li>
             <li><a href="#logpurchase">logPurchase</a></li>
@@ -151,6 +152,17 @@ The available properties to change are:</p>
 appboyPlugin.setUserInfo(info);
 </code></pre>
 
+<h2 id="setcustomattribute"><strong>setCustomAttribute</strong></h2>
+<p>Set the desired set of custom attributes for the active user with the given keys and values.</p>
+<pre><code>local attributes = {
+    attr1 = &quot;value&quot;, // string
+    attr2 = 20, // number
+    attr3 = true, // boolean
+    attr4 = 20.88 // float
+}
+appboyPlugin.setCustomAttribute(attributes);
+</code></pre>
+
 <h2 id="flushdataandprocessrequestqueue"><strong>flushDataAndProcessRequestQueue</strong></h2>
 <p>Enqueues a data flush request for the current user and immediately starts processing the network queue. Note that if the queue already contains another request for the current user, that the new data flush request will be merged into the already existing request and only one will execute for that user.</p>
 <pre><code>appboyPlugin.flushDataAndProcessRequestQueue();
@@ -232,5 +244,5 @@ appboyPlugin.logPurchase(purchaseProperties);
 
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2017-11-07 22:48:46
+Build Date UTC : 2017-12-12 02:24:30
 -->
