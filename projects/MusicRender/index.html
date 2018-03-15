@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Music Render</title>
-  </head>
-  <body>
-  <script type="text/javascript" src="three.js"></script><script type="text/javascript" src="main.js"></script></body>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Music Render</title>
+	</head>
+	<body>
+		<audio id="audio"></audio>
+		<canvas id="canvas"></canvas>
+		<div class="audio-player">
+			<button id="play-track"></button>
+			<button id="prev-track"></button>
+			<button id="next-track"></button>
+			<div>
+				<div id="time-track"></div>
+				<span id="title-track">Song Title - Artist</span>
+			</div>
+			<button id="show-playlist"></button>
+			<div class="playlist" id="playlist-container">
+				
+			</div>
+		</div>
+	<script type="text/javascript" src="three.js"></script><script type="text/javascript" src="main.js"></script></body>
 </html>
